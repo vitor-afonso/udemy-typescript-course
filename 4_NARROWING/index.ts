@@ -91,3 +91,47 @@ function getDogDetails(dog: Dog) {
 
 getDogDetails(bobby);
 getDogDetails(farrusco);
+
+// 5 - desafio
+
+// function getReview(nota: number | boolean) {
+//   if (typeof nota === 'number') {
+//     if (nota === 1) {
+//       console.log('Muito insatisfeito');
+//     }
+//     if (nota === 2) {
+//       console.log('Insatisfeito');
+//     }
+//     if (nota === 3) {
+//       console.log('Neutro');
+//     }
+//     if (nota === 4) {
+//       console.log('Satisfeito');
+//     }
+//     if (nota === 5) {
+//       console.log('Muito satisfeito');
+//     }
+//   }
+//   if (nota === false) {
+//     console.log('Utilizador não deixou review. Devia estar com fome.');
+//   }
+// }
+
+// getReview(false);
+// getReview(1);
+// getReview(3);
+// getReview(5);
+
+type Review = number | boolean;
+
+function showUserReview(review: Review) {
+  if (!review) {
+    console.log('Você não avaliou o produto!');
+    return;
+  }
+  console.log(`A nota que você deu foi ${review}, obrigado!`);
+}
+
+showUserReview(false);
+showUserReview(3);
+showUserReview(4);

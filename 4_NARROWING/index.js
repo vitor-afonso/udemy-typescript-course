@@ -79,3 +79,13 @@ function getDogDetails(dog) {
 }
 getDogDetails(bobby);
 getDogDetails(farrusco);
+function showUserReview(review) {
+    if (!review) {
+        console.log('Você não avaliou o produto!');
+        return;
+    }
+    console.log(`A nota que você deu foi ${review}, obrigado!`);
+}
+showUserReview(false);
+showUserReview(3);
+showUserReview(4);
