@@ -1,91 +1,48 @@
 "use strict";
-// 1- type guard
-const sum = (a, b) => {
-    if (typeof a === 'string' && typeof b === 'string') {
-        console.log(Number(a) + Number(b));
-    }
-    else if (typeof a === 'number' && typeof b === 'number') {
-        console.log(a + b);
-    }
-    else {
-        console.log('Error! Impossible to perform the sum.');
-    }
+// 1 - funcoes sem retorno
+function withoutReturn() {
+    console.log('Não tem retorno');
+    // return 1
+}
+withoutReturn();
+// 2 - callback como argumento
+function greet(name) {
+    return `Olá ${name}!`;
+}
+function preGreeting(f, username) {
+    console.log('Aguarde por favor...');
+    const greetStr = f(username);
+    console.log(greetStr);
+    //return 4
+}
+preGreeting(greet, 'Casemiro');
+preGreeting(greet, 'Fernando');
+// 3 - generic function
+const printElement = (arr) => {
+    return arr[0];
 };
-sum('5', '72');
-sum(2, 5);
-sum(12, '25');
-// 2 - checando se valor existe
-const operations = (someArr, operation) => {
-    if (operation) {
-        if (operation === 'sum') {
-            const sumResult = someArr.reduce((num, total) => num + total);
-            console.log({ sumResult });
-        }
-        else if (operation === 'multiply') {
-            const multiplyResult = someArr.reduce((num, total) => num * total);
-            console.log({ multiplyResult });
-        }
-    }
-    else {
-        console.log('Please define operation.');
-    }
+console.log(printElement([1, 2, 3]));
+console.log(printElement(['a', 'b', 'c']));
+//console.log(printElement('not an array'))
+const mergeObjects = (obj1, obj2) => {
+    return {
+        ...obj1,
+        ...obj2,
+    };
 };
-operations([3, 5, 7]);
-operations([3, 5, 7], 'sum');
-operations([3, 5, 7], 'multiply');
-// 3 - instanceof
-class User {
-    constructor(name) {
-        this.name = name;
-    }
-}
-class SuperUser extends User {
-    constructor(name) {
-        super(name);
-    }
-}
-const jhon = new User('Jhon');
-const paul = new SuperUser('Paul');
-function userGreeting(user) {
-    if (user instanceof SuperUser) {
-        console.log(`Olá ${user.name}, deseja ver os dados?`);
-    }
-    else if (user instanceof User) {
-        console.log(`Olá ${user.name}!`);
-    }
-}
-userGreeting(jhon);
-userGreeting(paul);
-// 4 - operador in
-class Dog {
-    constructor(name, breed) {
-        this.name = name;
-        if (breed) {
-            this.breed = breed;
-        }
-    }
-}
-const bobby = new Dog('Bobby', 'rottweiler');
-const farrusco = new Dog('Farrusco');
-function getDogDetails(dog) {
-    if ('breed' in dog) {
-        console.log(dog);
-        console.log(`${dog.name} é um ${dog.breed}.`);
+const newObject = mergeObjects({ name: 'Fernando' }, { age: 77, country: 'United States' });
+console.log(newObject);
+// 4 - constraints
+const biggestNumber = (a, b) => {
+    let biggest;
+    if (+a > +b) {
+        biggest = a;
     }
     else {
-        console.log(dog);
-        console.log(`${dog.name} é um rafeiro.`);
+        biggest = b;
     }
-}
-getDogDetails(bobby);
-getDogDetails(farrusco);
-function showUserReview(review) {
-    if (!review) {
-        console.log('Você não avaliou o produto!');
-        return;
-    }
-    console.log(`A nota que você deu foi ${review}, obrigado!`);
-}
-showUserReview(false);
-showUserReview(3);
-showUserReview(4);
+    return biggest;
+};
+console.log(biggestNumber(3, 8));
+console.log(biggestNumber('5', '12'));
+//console.log(biggestNumber('12', 7));
