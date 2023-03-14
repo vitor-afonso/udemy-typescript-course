@@ -167,3 +167,72 @@ console.log(myCoords);
 myCoords.fillX = 7;
 
 console.log(myCoords);
+
+// 9 - implements
+
+// Allow us to define that the classes that implements(inherits)
+// from  this interface must have a itemTitle method that return a string
+
+interface ShowTitle {
+  itemTitle(): string;
+}
+
+class BlogPost implements ShowTitle {
+  title;
+  constructor(title: string) {
+    this.title = title;
+  }
+  // must return something because we defined it in the interface
+  itemTitle() {
+    return `Titulo do post: ${this.title}`;
+  }
+}
+
+class MyBook implements ShowTitle {
+  title;
+  constructor(title: string) {
+    this.title = title;
+  }
+  itemTitle() {
+    return `O titulo do livro: ${this.title}`;
+  }
+}
+
+const myPost = new BlogPost("A day in a dev's shoes");
+
+const myBook = new MyBook('Manxi lomba na catchupa!');
+
+console.log(myPost.itemTitle());
+console.log(myBook.itemTitle());
+
+// 10 - override de métodos
+class Base {
+  someMethod() {
+    console.log('Alguma coisa!');
+  }
+}
+
+class Nova extends Base {
+  someMethod() {
+    console.log('Alguma outra coisa!');
+  }
+}
+
+const myNewClass = new Nova();
+
+myNewClass.someMethod();
+
+// 11 - public
+class C {
+  public x = 10;
+}
+
+// D inherits and can access everything
+// that is public in C as if it belonged to D
+class D extends C {}
+
+const cInstance = new C();
+const dInstance = new D();
+
+console.log(cInstance.x);
+console.log(dInstance.x);
