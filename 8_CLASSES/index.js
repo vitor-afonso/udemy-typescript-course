@@ -150,3 +150,104 @@ const cInstance = new C();
 const dInstance = new D();
 console.log(cInstance.x);
 console.log(dInstance.x);
+// 12 - protected
+// Properties of E can only be accessed by subclasses and throught methods
+class E {
+    constructor() {
+        this.x = 7;
+    }
+    protectedMethod() {
+        console.log('Sum x =>', this.x + this.x);
+    }
+}
+class F extends E {
+    // used to be able to access x
+    showX() {
+        console.log('fInstance.showX =>', this.x);
+    }
+    // used to be able to access protectedMethod
+    showProtectedMethod() {
+        this.protectedMethod();
+    }
+}
+const eInstance = new E();
+//this will not work because it can only be accessed throught a method fom a subClass
+// console.log(eInstance.x)
+// eInstance.protectedMethod();
+const fInstance = new F();
+//this will not work because it can only be accessed throught a method
+fInstance.showX();
+fInstance.showProtectedMethod();
+// 13 - private
+// Properties of PrivateClass can only be accessed by non private methods within it's own class
+class PrivateClass {
+    constructor() {
+        this.name = 'Private';
+    }
+    showName() {
+        console.log(this.name);
+    }
+    privateMethod() {
+        console.log('I am private!');
+    }
+    showPrivateMethodResult() {
+        this.privateMethod();
+    }
+}
+const pClass = new PrivateClass();
+pClass.showName();
+pClass.showPrivateMethodResult();
+class TestingPrivate extends PrivateClass {
+    myMethod() {
+        // this.privateMethod()
+    }
+}
+// 14 - static members
+// Properties and methods from a class that can be accessed without having to create an object.
+// We access the class directly
+class StaticMembers {
+    static staticMethod() {
+        console.log('Este método é static!');
+    }
+}
+StaticMembers.prop = 'Teste static';
+console.log(StaticMembers.prop);
+StaticMembers.staticMethod();
+// 15 - Generic class
+//Allow us to define the type of the properties at time of creation of the instance(object)
+class Item {
+    //here its being defined that the types will be whatever the type of the argument is
+    constructor(first, second) {
+        this.first = first;
+        this.second = second;
+    }
+    showFirst() {
+        console.log('First item =>', this.first);
+    }
+}
+const myItem = new Item('Caneta', 7);
+myItem.showFirst();
+console.log('typeof first =>', typeof myItem.first);
+console.log('typeof second =>', typeof myItem.second);
+// 16 - parameter properties
+// Allow us to define visibility (public, private, protected) and type,
+// all in the constructor without having to define the visibility before
+// like in the previous examples
+class ParameterClass {
+    constructor(name, qty, price) {
+        this.name = name;
+        this.qty = qty;
+        this.price = price;
+        this.name = name;
+        this.qty = qty;
+    }
+    get showQty() {
+        return `Qtd total: ${this.qty}`;
+    }
+    get showPrice() {
+        return `Preço: R$${this.price}`;
+    }
+}
+const newShirt = new ParameterClass('Camisa', 5, 19.99);
+console.log(newShirt.showQty);
+// console.log(newShirt.qty)
