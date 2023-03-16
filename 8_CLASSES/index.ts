@@ -367,3 +367,55 @@ const newShirt = new ParameterClass('Camisa', 5, 19.99);
 console.log(newShirt.showQty);
 
 // console.log(newShirt.qty)
+
+// 17 - class expression
+const myClass = class<T> {
+  name;
+
+  constructor(name: T) {
+    this.name = name;
+  }
+};
+
+const pessoa = new myClass('Jones');
+
+console.log(pessoa.name);
+
+// 18 - abstract classs
+
+// A class that cannot be directly instantiated
+// but serves as a base for other classes to inherit from.
+// It contains abstract methods that must be implemented by its derived classes.
+
+abstract class AbstractClass {
+  abstract showName(): void;
+}
+
+// const newObj = new AbstractClass()
+
+class ExampleAbstractClass extends AbstractClass {
+  name;
+  constructor(name: string) {
+    super();
+    this.name = name;
+  }
+  showName() {
+    console.log(this.name);
+  }
+}
+
+const newAbstractObj = new ExampleAbstractClass('Casemiro Teixeira');
+
+newAbstractObj.showName();
+
+// 19 - relacoes entre classes
+
+class Dog {
+  name!: string;
+}
+
+class Cat {
+  name!: string;
+}
+
+const doguinho: Dog = new Cat();

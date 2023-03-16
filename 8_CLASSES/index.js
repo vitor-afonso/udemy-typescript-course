@@ -251,3 +251,26 @@ class ParameterClass {
 const newShirt = new ParameterClass('Camisa', 5, 19.99);
 console.log(newShirt.showQty);
 // console.log(newShirt.qty)
+// 17 - class expression
+const myClass = class {
+    constructor(name) {
+        this.name = name;
+    }
+};
+const pessoa = new myClass('Jones');
+console.log(pessoa.name);
+// 18 - abstract classs
+class AbstractClass {
+}
+// const newObj = new AbstractClass()
+class ExampleAbstractClass extends AbstractClass {
+    constructor(name) {
+        super();
+        this.name = name;
+    }
+    showName() {
+        console.log(this.name);
+    }
+}
+const newAbstractObj = new ExampleAbstractClass('Casemiro Teixeira');
+newAbstractObj.showName();
