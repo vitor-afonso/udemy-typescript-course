@@ -260,6 +260,9 @@ const myClass = class {
 const pessoa = new myClass('Jones');
 console.log(pessoa.name);
 // 18 - abstract classs
+// A class that cannot be directly instantiated
+// but serves as a base for other classes to inherit from.
+// It contains abstract methods that must be implemented by its derived classes.
 class AbstractClass {
 }
 // const newObj = new AbstractClass()
@@ -274,3 +277,9 @@ class ExampleAbstractClass extends AbstractClass {
 }
 const newAbstractObj = new ExampleAbstractClass('Casemiro Teixeira');
 newAbstractObj.showName();
+// 19 - relacoes entre classes
+class Dog {
+}
+class Cat {
+}
+const doguinho = new Cat();
