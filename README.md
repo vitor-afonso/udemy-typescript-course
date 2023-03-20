@@ -10,7 +10,7 @@ This course is designed to teach you everything you need to know about TypeScrip
 
 You'll also learn how to use modules with TypeScript, how to work with decorators, and how to use generics. By the end of this course, you'll have a solid understanding of TypeScript and be able to use it to build complex applications.
 
-## Contents
+## Contents :open_file_folder:
 The repository includes several folders and files that correspond to the different sections of the course. Here is a brief overview of what you'll find:
 
 - 01-Intro: This folder contains code samples and exercises that cover the introduction to TypeScript covering topics such as typing by annotation and inference.
@@ -40,5 +40,5 @@ To get started with this repository, you'll need to have TypeScript installed on
 `npm install -g typescript`
 Once you have TypeScript installed, you can clone this repository and start working through the code samples and exercises.
 
-## Conclusion
+## Conclusion :sparkles: 
 This repository is designed to be a comprehensive resource for learning TypeScript. By working through the code samples and exercises, you'll gain a solid understanding of TypeScript and be able to use it to build complex applications. If you have any questions or feedback, please feel free to create an issue or pull request.
