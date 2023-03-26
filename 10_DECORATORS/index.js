@@ -108,3 +108,29 @@ __decorate([
 ], Monster.prototype, "showAge", null);
 const charmander = new Monster('Charmander', 10);
 console.log(charmander);
+// 6 - property decorator
+function formatNumberDecorator() {
+    return function (target, propertyKey) {
+        let value;
+        const getter = function () {
+            return value;
+        };
+        const setter = function (newVal) {
+            value = newVal.padStart(5, '0');
+        };
+        Object.defineProperty(target, propertyKey, {
+            get: getter,
+            set: setter,
+        });
+    };
+}
+class Id {
+    constructor(id) {
+        this.id = id;
+    }
+}
+__decorate([
+    formatNumberDecorator()
+], Id.prototype, "id", void 0);
+const myId = new Id('10');
+console.log(myId);

@@ -141,12 +141,13 @@ function formatNumberDecorator() {
 }
 
 class Id {
+  @formatNumberDecorator()
   id;
   constructor(id: string) {
     this.id = id;
   }
 }
 
-const myId = new Id('7');
+const myId = new Id('10');
 
 console.log(myId);
