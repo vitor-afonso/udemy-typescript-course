@@ -134,3 +134,67 @@ __decorate([
 ], Id.prototype, "id", void 0);
 const myId = new Id('10');
 console.log(myId);
+// 7 - class decorator
+function createDate(create) {
+    create.prototype.createdAt = new Date();
+}
+let Book = class Book {
+    constructor(id) {
+        this.id = id;
+    }
+};
+Book = __decorate([
+    createDate
+], Book);
+let Pen = class Pen {
+    constructor(id) {
+        this.id = id;
+    }
+};
+Pen = __decorate([
+    createDate
+], Pen);
+const myBook = new Book(25);
+const myPen = new Pen(52);
+console.log(myBook);
+console.log('myBook.createdAt =>', myBook.createdAt);
+console.log('myPen.createdAt =>', myPen.createdAt);
+// 8 - exemplo real method decorator
+function checkIfUserPosted() {
+    return function (target, key, descriptor) {
+        console.log({ descriptor });
+        const childFunction = descriptor.value;
+        // descriptor contains the values of the thing(method) it was attached to
+        // but here we will replace or not that value depending on the value of one of its arguments
+        descriptor.value = function (...args) {
+            if (args[1] === true) {
+                console.log('A post was already made!');
+                return null;
+            }
+            else {
+                // if alreadyPosted === false, we return the function and its arguments
+                return childFunction.apply(this, args);
+            }
+        };
+        // in the end the descriptor will be in its original form containing the function that logs the post
+        // or the descriptor will be null and log that a post was already made
+        return descriptor;
+    };
+}
+class Post {
+    constructor() {
+        this.alreadyPosted = false;
+    }
+    post(content, alreadyPosted) {
+        this.alreadyPosted = true;
+        console.log(`Post content: ${content}`);
+    }
+}
+__decorate([
+    checkIfUserPosted()
+], Post.prototype, "post", null);
+const myPost = new Post();
+// At this moment alreadyPosted is false
+myPost.post('This is my firt post.', myPost.alreadyPosted);
+// At this moment alreadyPosted is true
+myPost.post('This is my second post.', myPost.alreadyPosted);

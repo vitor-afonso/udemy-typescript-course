@@ -151,3 +151,77 @@ class Id {
 const myId = new Id('10');
 
 console.log(myId);
+
+// 7 - class decorator
+
+function createDate(create: Function) {
+  create.prototype.createdAt = new Date();
+}
+
+@createDate
+class Book {
+  id;
+  createdAt?: Date;
+  constructor(id: number) {
+    this.id = id;
+  }
+}
+
+@createDate
+class Pen {
+  id;
+  createdAt?: Date;
+  constructor(id: number) {
+    this.id = id;
+  }
+}
+
+const myBook = new Book(25);
+const myPen = new Pen(52);
+
+console.log(myBook);
+
+console.log('myBook.createdAt =>', myBook.createdAt);
+
+console.log('myPen.createdAt =>', myPen.createdAt);
+
+// 8 - exemplo real method decorator
+
+function checkIfUserPosted() {
+  return function (target: object, key: string | symbol, descriptor: PropertyDescriptor) {
+    console.log({ descriptor });
+    const childFunction = descriptor.value;
+
+    // descriptor contains the values of the thing(method) it was attached to
+    // but here we will replace or not that value depending on the value of one of its arguments
+    descriptor.value = function (...args: any[]) {
+      if (args[1] === true) {
+        console.log('A post was already made!');
+        return null;
+      } else {
+        // if alreadyPosted === false, we return the function and its arguments
+        return childFunction.apply(this, args);
+      }
+    };
+    // in the end the descriptor will be in its original form containing the function that logs the post
+    // or the descriptor will be null and log that a post was already made
+    return descriptor;
+  };
+}
+
+class Post {
+  alreadyPosted = false;
+  @checkIfUserPosted()
+  post(content: string, alreadyPosted: boolean) {
+    this.alreadyPosted = true;
+    console.log(`Post content: ${content}`);
+  }
+}
+
+const myPost = new Post();
+
+// At this moment alreadyPosted is false
+myPost.post('This is my firt post.', myPost.alreadyPosted);
+
+// At this moment alreadyPosted is true
+myPost.post('This is my second post.', myPost.alreadyPosted);
