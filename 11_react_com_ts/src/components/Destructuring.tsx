@@ -5,9 +5,18 @@ interface Props {
   content: string;
   commentsQty: number;
   tags: string[];
+  category: Category;
+}
+// 7 - enum
+
+// we export it so that we can use these values
+// where the component is being used
+export enum Category {
+  JS = 'javascript',
+  TS = 'typescript',
 }
 
-const Destructuring = ({ title, content, commentsQty, tags }: Props) => {
+const Destructuring = ({ title, content, commentsQty, tags, category }: Props) => {
   return (
     <div>
       <h2>{title}</h2>
@@ -18,6 +27,7 @@ const Destructuring = ({ title, content, commentsQty, tags }: Props) => {
           <span>#{tag} </span>
         ))}
       </div>
+      <h4>{category}</h4>
     </div>
   );
 };
