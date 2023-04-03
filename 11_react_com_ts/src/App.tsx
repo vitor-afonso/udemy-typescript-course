@@ -6,7 +6,11 @@ import Destructuring, { Category } from './components/Destructuring';
 // 6 - useState
 import State from './components/State';
 
+// 9 - context
 import { createContext } from 'react';
+
+// 10 - utilizando context
+import Context from './components/Context';
 
 // 8 - type
 
@@ -70,6 +74,7 @@ function App() {
         <State />
         {myText && <p>{myText}</p>}
         {anotherText && <p>{anotherText}</p>}
+        <Context />
       </div>
     </AppContext.Provider>
   );
