@@ -31,8 +31,6 @@ const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
     setTaskList!([...taskList, newTask]);
     setTitle('');
     setDificulty(0);
-
-    console.log('taskList => ', taskList);
   };
   return (
     <form className={styles.form} onSubmit={addTaskHandler}>
