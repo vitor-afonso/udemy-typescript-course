@@ -33,12 +33,17 @@ The repository includes several folders and files that correspond to the differe
 
 - 10-Decorators: This folder contains code samples that cover decorators with TypeScript.
 
-index.ts: This is the main entry point for the code samples in each folder of this repository.
+- 11-React-com-TS: This folder contains code samples that cover The basics of React with TypeScript.
+
+- 12-todo-React: This folder contains a todo React App where we apply everything we learned about using TypeScript with react.
+
+index.ts: This is the main entry point for the code samples in each folder(1-10) of this repository.
 
 ## Getting Started
 To get started with this repository, you'll need to have TypeScript installed on your machine. You can install TypeScript using npm by running the following command:
-`npm install -g typescript`
-Once you have TypeScript installed, you can clone this repository and start working through the code samples and exercises.
+`npm install -g typescript`. You can also install the extension live server if you are using VS Code in order to run a server for you and open a browser window.
+Once you have TypeScript installed, you can clone this repository and start working through the code samples and exercises. If your are in the folders 1-10 you can run your code the following way - in your CLI go the the desired topic/folder and run `tsc -w` to start compiling TypScript and start live server to see the results in your browser.
+If your are in the folders 11-12 you can run your code the following way - in your CLI go the the desired topic/folder and run `npm start`
 
 ## Conclusion :sparkles: 
 This repository is designed to be a comprehensive resource for learning TypeScript. By working through the code samples and exercises, you'll gain a solid understanding of TypeScript and be able to use it to build complex applications. If you have any questions or feedback, please feel free to create an issue or pull request.
