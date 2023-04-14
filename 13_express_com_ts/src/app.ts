@@ -4,7 +4,7 @@
 
 // 2 - init express
 
-import express from 'express';
+import express, { Request, Response } from 'express';
 
 const app = express();
 
@@ -43,6 +43,16 @@ app.all('/api/product/check', async (req, res) => {
     } else {
       return res.send('Impossible to perform operation.');
     }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// 5 - interfaces do express
+
+app.get('/api/interfaces', async (req: Request, res: Response) => {
+  try {
+    res.send('Using TypeScrip interfaces');
   } catch (error) {
     console.log(error);
   }
