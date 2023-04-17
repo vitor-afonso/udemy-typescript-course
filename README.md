@@ -37,6 +37,8 @@ The repository includes several folders and files that correspond to the differe
 
 - 12-todo-React: This folder contains a todo React App where we apply everything we learned about using TypeScript with react.
 
+- 13-ts-com-express: This folder contains code samples that cover The basics of Express with TypeScript.
+
 index.ts: This is the main entry point for the code samples in each folder(1-10) of this repository.
 
 ## Getting Started
