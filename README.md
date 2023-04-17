@@ -45,7 +45,7 @@ index.ts: This is the main entry point for the code samples in each folder(1-10)
 To get started with this repository, you'll need to have TypeScript installed on your machine. You can install TypeScript using npm by running the following command:
 `npm install -g typescript`. You can also install the extension live server if you are using VS Code in order to run a server for you and open a browser window.
 Once you have TypeScript installed, you can clone this repository and start working through the code samples and exercises. If your are in the folders 1-10 you can run your code the following way - in your CLI go the the desired topic/folder and run `tsc -w` to start compiling TypScript and start live server to see the results in your browser.
-If your are in the folders 11-12 you can run your code the following way - in your CLI go the the desired topic/folder and run `npm start`
+If your are in the folders 11-12 you can run your code the following way - in your CLI go the the desired topic/folder and run `npm start`. If your are in the folder 13 you can run your code the following way - in your CLI go the the desired topic/folder and run `npm run dev`
 
 ## Conclusion :sparkles: 
 This repository is designed to be a comprehensive resource for learning TypeScript. By working through the code samples and exercises, you'll gain a solid understanding of TypeScript and be able to use it to build complex applications. If you have any questions or feedback, please feel free to create an issue or pull request.
