@@ -10,6 +10,15 @@ const app = express();
 
 // 3 - rota com POST
 
+// 11 - middleware para todas as rotas
+
+function showPath(req: Request, res: Response, next: NextFunction) {
+  console.log(req.path);
+  next();
+}
+
+app.use(showPath);
+
 // to allow our app to work with json format
 app.use(express.json());
 
@@ -134,6 +143,35 @@ app.get('/api/user/:id/access', checkUser, async (req: Request, res: Response) =
     res.json({ msg: 'Wellcome to the admin area.' });
   } catch (error) {
     console.log(error);
+  }
+});
+
+// 12 - req e res com generics
+
+app.get('/api/user/:id/details/:name', checkUser, async (req: Request<{ id: string; name: string }>, res: Response<{ status: boolean }>) => {
+  try {
+    const { id } = req.params;
+    const { name } = req.params;
+
+    // 'test' gives error because is not defined in the generic
+    // const { test } = req.params;
+
+    console.log('Id: ' + id);
+    console.log('Name: ' + name);
+
+    res.json({ status: true });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// 13 - api error
+
+app.get('/api/error', async (req: Request, res: Response) => {
+  try {
+    throw new Error('Something went wrong :/');
+  } catch (e: any) {
+    res.status(500).json({ msg: e.message });
   }
 });
 
