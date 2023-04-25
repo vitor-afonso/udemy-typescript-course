@@ -1,6 +1,6 @@
 import { body } from 'express-validator';
 
-// Creates array of errors to be validated by handleValidation that will process the errors.
+// Creates array of errors to be validated by handleValidation (at the route) that will process the errors.
 
 export const movieCreateValidation = () => {
   return [
