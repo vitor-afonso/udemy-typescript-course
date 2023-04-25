@@ -1,7 +1,7 @@
 import { Router, Request, Response } from 'express';
 import { createMovie, getAllMovies, findMovieById, removeMovie, updateMovie } from './controllers/movieControllers';
 import { validate } from './middleware/handleValidation';
-import { movieCreateValidation } from './middleware/movieValidation';
+import { movieCreateValidation, movieUpdateValidation } from './middleware/movieValidation';
 
 const router = Router();
 
@@ -15,4 +15,4 @@ export default router
   .get('/movie/:id', findMovieById)
   .get('/movie', getAllMovies)
   .delete('/movie/:id', removeMovie)
-  .patch('/movie/:id', movieCreateValidation(), validate, updateMovie);
+  .patch('/movie/:id', movieUpdateValidation(), validate, updateMovie);

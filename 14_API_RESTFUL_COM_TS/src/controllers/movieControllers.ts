@@ -52,7 +52,7 @@ export async function updateMovie(req: Request, res: Response) {
     const { id } = req.params;
     const updatedMovie = await MovieModel.findByIdAndUpdate(id, req.body, { new: true });
     if (!updatedMovie) {
-      return res.status(404).json({ error: 'The movie does not exist.' });
+      return res.status(404).json({ error: 'Movie does not exist.' });
     }
     return res.status(200).json({ msg: 'Movie successfully updated.', updatedMovie });
   } catch (e: any) {
